@@ -1,0 +1,113 @@
+// 定义 Usage 函数
+// func (o *Options) usage() {
+// 	fmt.Fprintf(os.Stderr, "Usage of your program:\n")
+// 	flag.PrintDefaults()
+// }
+
+// fmt.Println("Parsed flags:", flag.Args())
+// fmt.Println("Number of parsed flags:", flag.NFlag())
+
+// if flag.NArg() < 1 {
+// 	return nil, fmt.Errorf("请提供一个操作选项")
+// }
+
+// o.Name = flag.Arg(0)
+
+// flag.Arg(i int) string：返回索引为 i 的命令行参数的值。
+// flag.Args() []string：返回所有未被解析的命令行参数的切片。
+// flag.Parse()：解析命令行标志，并根据定义的标志设置相应的变量值。
+// flag.StringVar(p *string, name string, value string, usage string)：定义一个字符串类型的命令行标志，并设置其默认值和使用说明。
+
+// flagSet.Parse(os.Args[1:])
+// flag.Parse()
+// err := flag.CommandLine.Parse(os.Args[2:])
+// if err != nil {
+// 	return nil, err
+// }
+
+// func isValidUrl(url string) bool {
+// 	return url != ""
+// }
+
+// 自定义标签解析逻辑
+// args := flag.Args()
+// fmt.Println(args)
+// parse := false
+// for _, arg := range args {
+// 	if !parse {
+// 		for _, df := range definedFlags {
+// 			if arg == "-"+df {
+// 				parse = true
+// 				break
+// 			}
+// 		}
+// 	}
+// }
+
+// if !parse {
+// 	// 如果没有找到定义的标志，则显示帮助信息
+// 	PrintUsageInfo(o.Name)
+// 	return nil, errors.New("invalid or missing command line arguments")
+// }
+
+// 自定义标签处理
+// var definedFlags []string
+// definedFlags = append(definedFlags, "u", "p", "d", "lh", "lp")
+
+// flagSet := flag.NewFlagSet("Options", flag.ExitOnError)
+
+// 检查 -h 或 --help 标志
+// for i, arg := range args {
+// 	if arg == "-h" || arg == "--help" {
+// 		PrintUsageInfo(cfg.Name)
+// 		os.Exit(0) // 显示帮助信息后退出程序
+// 	}
+// 	if i == 1 {
+// 		cfg.Name = arg
+// 	}
+// }
+
+// args = args[1:]
+// // 重新构建参数列表，排除 'week' 参数
+// newArgs := make([]string, 0, len(args))
+// for _, arg := range args {
+// 	if !strings.HasPrefix(arg, "-") {
+// 		// 假设非标志参数是 'week' 之后的参数
+// 		break
+// 	}
+// 	newArgs = append(newArgs, arg)
+// }
+
+
+
+// body
+// json格式
+// data := DataStruct{Name: "John", Age: 30}
+// jsonData, err := json.json.Marshal(data)
+// body :=   bytes.NewReader(jsonData)
+
+// Form 表单
+// values := url.Values{}
+// values.Add("name", "John")
+// values.Add("age", "30")
+// body := strings.NewReader(values.Encode())
+
+// 原始字节流
+// rawData := []byte("Hello World!")
+// body := bytes.NewReader(rawData)
+
+// 对于大型数据或实时数据，您可以使用流式请求，其中数据是逐块写入的
+// file, err := os.Open("example.txt")
+// if err != nil {
+// 	panic(err)
+// }
+// defer file.Close()
+// body := file
+// req.Header.Set("Transfer-Encoding", "chunked")
+
+// bytes.NewReader 用于按字节读取，而 strings.NewReader 用于按字符（Unicode 码点）读取
+// bytes.NewReader 和 strings.NewReader 都是 Go 语言标准库中用于创建 io.Reader 接口实现的函数，它们允许你将 []byte 或 string 封装成一个可以按需读取的 Reader
+// bytes.NewReader 接受一个 []byte 类型的参数，并返回一个 *bytes.Reader 类型的 Reader。
+// 适用于处理字节切片，特别是在需要频繁读取或处理字节数据时，因为 bytes.Reader 可以有效地管理内部的字节缓冲区。
+// strings.NewReader 接受一个 string 类型的参数，并返回一个 *strings.Reader 类型的 Reader。
+// 适用于处理字符串，尤其是在需要按字符顺序读取字符串时，因为 strings.Reader 可以直接从字符串中读取字符。
